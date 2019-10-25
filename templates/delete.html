@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="display">
+    <p>Are you sure you want to delete {{ item.name }}?</p>
+    <form action="#" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <a href='{{ url_for('displayItem', category_id=category.id, item_id=item.id) }}'><button type="button">Cancel</button></a>
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+{% endblock %}

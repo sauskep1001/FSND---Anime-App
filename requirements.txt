@@ -1,0 +1,9 @@
+apiclient
+Flask
+Flask-SeaSurf
+Flask-WTF
+google-api-python-client
+httplib2
+Jinja2
+oauth2client
+sqlalchemy

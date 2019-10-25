@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% block content %}
+
+<ol class="breadcrumb">
+    <li> <a href="/"><i class="fa fa-home" aria-hidden="true"></i></a> </li>
+    <li> <a href="/catalog">Categories</a> </li>
+    <li class="active">{{ category.name }} </li>
+</ol>
+<div class="row">
+    <div class="display">
+        <div class="col-md-6">
+            <h3 class="text-center">Categories</h3>
+            <ul>
+                {% for c in categories %}
+                <li class="list"> <a href="{{ url_for('displayCategory', category_id=c.id) }}" id="full-pad">{{ c.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">{{ category.name }}</h3>
+            <ul>
+                {% for i in items %}
+                <li class="list"> <a href="{{ url_for('displayItem',
+                            category_id=category.id,
+                            item_id=i.id) }}" id="full-pad">{{ i.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if 'username' in session %}
+            <a href="{{ url_for('createNew', category_id=category.id) }}"><button>Create New</button></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

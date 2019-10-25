@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="display">
+        <div class="col-md-6">
+            <h3 class="text-center">Categories</h3>
+            <ul> {% for c in categories %}
+                <li class="list"><a href="{{ url_for('displayCategory', category_id=c.id) }}" id="full-pad">{{ c.name }}</a></li> {% endfor %} </ul>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Latest Items Added</h3>
+            <ul>
+                {% for l in latest %}
+                <li class="list"> <a href="{{ url_for('displayItem', category_id=l.category.id, item_id=l.id) }}" id="latest">Item : {{ l.name }} <br> <span class="category text-muted">Category : {{ l.category.name }}</span></a>
+                    <br> </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
